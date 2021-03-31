@@ -20,6 +20,7 @@ rename_map={
         'source_type_name': "Source Type",
         'fuel_type_desc': "Fuel Type",
         'pollutant_short_name': "Pollutant",
+        "per_diff": "Percent Change in MOVES 3 Emissions",
         'rate_per_hour': "Idling Emission Rate (grams/hour)"
     }
 erlt_df_2014b_3_1 = (
@@ -144,7 +145,7 @@ def update_line_chart(sut_val, fuel_val, pollutant_val):
         data_frame=erlt_df_2014_2014b_1_fil,
         x='Year',
         y='Idling Emission Rate (grams/hour)',
-        hover_data=["Source Type", "Pollutant", "Year"],
+        hover_data=rename_map.values(),
         color="MOVES",
         barmode="group",
         template="plotly",
@@ -166,6 +167,10 @@ def update_line_chart(sut_val, fuel_val, pollutant_val):
             exponentformat='e',
             title_text = "Year"
         ),
+        hoverlabel=dict(
+            font_size=16,
+            font_family="Rockwell"
+        )
     )
     return fig
 
